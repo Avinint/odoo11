@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_geography_country,geography.country,model_geography_country,base.group_user,1,1,1,1
+access_geography_area,geography.area,model_geography_area,base.group_user,1,1,1,1
+access_geography_country_category,geography.country.category,model_geography_country_category,base.group_user,1,1,1,1

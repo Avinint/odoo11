@@ -1,0 +1,168 @@
+<odoo>
+
+    <!-- ==Countries== -->
+    <record model="ir.actions.act_window" id="country_list_view">
+        <field name="name">Countries</field>
+        <field name="res_model">geography.country</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <!--<field name="context" eval="{'search_default_filter_name': 1}"/>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first country
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="main_geography_menu" name="Geography"/>
+    <menuitem id="geography_menu" name="Geography" parent="main_geography_menu"/>
+    <menuitem id="country_menu" parent="geography_menu" name="Country" sequence="1"
+              action="country_list_view"/>
+
+    <record model="ir.ui.view" id="country_form_view">
+        <field name="name">country.form</field>
+        <field name="model">geography.country</field>
+        <field name="arch" type="xml">
+            <form string="Country Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="area_id"/>
+                        <field name="code"/>
+                        <field name="iso"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="country_tree_view">
+        <field name="name">country.tree</field>
+        <field name="model">geography.country</field>
+        <field name="arch" type="xml">
+            <tree string="Countries">
+                <field name="name"/>
+                <field name="area_id"/>
+                <field name="continent_id"/>
+                <field name="code"/>
+                <field name="iso"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="country_search_view">
+        <field name="name">country.search</field>
+        <field name="model">geography.country</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="iso"/>
+                <field name="area_id"/>
+                <field name="continent_id"/>
+                <filter name="europe" string="Europe"
+                domain="[('continent_id', '=', 'Europe')]"/>
+                 <filter name="africa" string="Africa"
+                domain="[('continent_id', '=', 'Africa')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- ==Areas== -->
+
+     <record model="ir.actions.act_window" id="area_list_view">
+        <field name="name">Areas</field>
+        <field name="res_model">geography.area</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create the first area
+            </p>
+        </field>
+    </record>
+    <menuitem id="area_menu" parent="geography_menu" name="Area" sequence="2"
+              action="area_list_view"/>
+
+    <record model="ir.ui.view" id="area_form_view">
+        <field name="name">area.form</field>
+        <field name="model">geography.area</field>
+        <field name="arch" type="xml">
+            <form string="Area Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                        <field name="code"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="area_tree_view">
+        <field name="name">area.tree</field>
+        <field name="model">geography.area</field>
+        <field name="arch" type="xml">
+            <tree string="Geographical areas">
+                <field name="name"/>
+                <field name="parent_id"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+     <!--==RECORDS== -->
+    <record model="geography.area" id="gworld">
+        <field name="name">World</field>
+         <field name="code">1</field>
+    </record>
+    <record model="geography.area" id="geur">
+        <field name="name">Europe</field>
+        <field name="code">150</field>
+    </record>
+    <record model="geography.area" id="gwe">
+        <field name="name">Western Europe</field>
+        <field name="code">155</field>
+    </record>
+    <record model="geography.country" id="gfr">
+        <field name="name">France</field>
+        <field name="iso">FRA</field>
+        <field name="code">250</field>
+    </record>
+    <record model="geography.country" id="gde">
+        <field name="name">Germany</field>
+        <field name="iso">DEU</field>
+        <field name="code">276</field>
+    </record>
+    <record model="geography.area" id="gafr">
+        <field name="name">Africa</field>
+        <field name="code">2</field>
+    </record>
+
+    <record model="geography.area" id="gnafr">
+        <field name="name">Northern Africa</field>
+        <field name="code">15</field>
+    </record>
+    <record model="geography.country" id="gal">
+        <field name="name">Algeria</field>
+        <field name="iso">DZA</field>
+        <field name="code">12</field>
+    </record>
+
+    <record model="geography.country.category" id="cdc">
+        <field name="name">Developing Country</field>
+        <field name="code">250</field>
+        <field name="iso">FRA</field>
+    </record>
+     <record model="geography.country.category" id="cldc">
+        <field name="name">Least Developed Country</field>
+         <field name="code">ldc</field>
+    </record>
+    <record model="geography.country.category" id="clldc">
+        <field name="name">Land Locked Developing Country</field>
+         <field name="code">lldc</field>
+    </record>
+     <record model="geography.country.category" id="csids">
+        <field name="name">Small Island Developing State</field>
+         <field name="code">sids</field>
+    </record>
+
+</odoo>

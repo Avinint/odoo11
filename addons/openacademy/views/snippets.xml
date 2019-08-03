@@ -1,0 +1,12 @@
+ <!--action-->
+<record model="ir.actions.act_window" id="action_id">
+    <field name="name">Action name</field>
+    <field name="res_model">model.name</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form,calendar</field>
+    # <field name="context" eval="{'search_default_my_courses': 1}"/>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">Create the first object
+        </p>
+    </field>
+</record>

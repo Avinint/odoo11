@@ -1,0 +1,1 @@
+python odoo-bin -w odoo -r odoo --addons-path=addons  --db-filter=odoo$ --config=odoo.txt -u geography
